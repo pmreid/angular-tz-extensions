@@ -44,7 +44,7 @@ If [jsTimezoneDetect](https://bitbucket.org/pellepim/jstimezonedetect) is includ
 
 ## Examples
 
-See `docs/examples` for demonstrations of these features. As timezone data (found in `tz/data`) _must_ be served from a web server, these examples will not work from the local disk. However, there is a quick solution for most platforms: the files can be served with Python's [`SimpleHTTPServer`](http://docs.python.org/2/library/simplehttpserver.html).
+See `docs/examples` for demonstrations of these features. As timezone data (found in `tz/data`) _must_ be served from a web server, these examples will not work from the local disk. A quick solution is to use the included node web-server.js script. With (http://nodejs.org)[node] installed run 'node scripts/web-server.js', and point your browser to http://localhost:8000/docs/examples/filters.html
 
 ```shell
 python -m SimpleHTTPServer
