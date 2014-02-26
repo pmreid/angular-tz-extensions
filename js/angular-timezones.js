@@ -1,10 +1,5 @@
-/* angular-timezones.js 
- *
- * Copyright 2014 Chris Houseknecht
- * Originally forked from https://github.com/michaelahlers/angular-timezones
- * Distributed freely under terms of the MIT License (MIT)
- *
- * Creates Timezones module
+/**
+ * angular-timezones.js 
  *
  */
 
@@ -179,6 +174,38 @@
                 return resolve(name, now);
             },
 
+            /**
+             *  Given a date object or date string (in UTC format) and an Olson name, align the date object
+             *  and add the offset minutes to the datetime value. The getUTC*(), toUTString() and getTime() 
+             *  methods on the resulting date object will return values that include the timezone offset
+             *  minutes.
+             *
+             *  Note: Don't pass in the result of new Date(), as it automatically adjusts the time to the 
+             *  local timezone. Pass in a string or object that has NOT already been adjusted or set relative
+             *  to a specific zone.
+             */
+            toUTC: function(dt, tz) {
+                var dateObj = (angular.isDate(dt)) ? dt : new Date(dt),
+                    dateStr, tzDate;
+                // Make sure the date we're using is not already adjusted to the local
+                // timezone
+                dateStr = dateObj.getUTCFullYear() + '-' +
+                    ('00' + (dateObj.getUTCMonth() + 1)).substr(-2,2) + '-' +
+                    ('00' + dateObj.getUTCDate()).substr(-2,2) + 'T' +
+                    ('00' + dateObj.getUTCHours()).substr(-2,2) + ':' +
+                    ('00' + dateObj.getUTCMinutes()).substr(-2,2) + ':' +
+                    ('00' + dateObj.getUTCSeconds()).substr(-2,2) + '.000Z';
+                tzDate = this.align(new Date(dateStr), tz);
+                return new Date(tzDate.getTime() + (tzDate.getTimezoneOffset() * 60000));
+            },
+
+            /**
+             * Reads the zone.tab file and builds an array of objects: { name: <Olsan name> }.
+             * The array contains an object for every Olsan name. Use the array for populating
+             * <select> lists. Pass in $scope. When the list is ready 'zonesReady' will be 
+             * emitted to the $scope. Catch using $scope.$on('zonesReady', function(e, zones) {...}),
+             * where zones is a pointer to the array.
+             */
             getZoneList: function(scope) {
                 var zones = [], sorted;
                 if (localStorage.zones) {
