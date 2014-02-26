@@ -70,12 +70,12 @@
              */
 
             if (!angular.isDate(reference)) {
-                $log.error('DateObjectExpected. Expected a Date object; got: ' + typeof reference + ' of ' + reference);
                 throw {
-                    name: 'DateObjectExpected',
-                    message: 'Expected a Date object; got "' + reference + '".'
+                    name : 'DateObjectExpected',
+                    message : 'Expected a Date object; got "' + reference + '".'
                 };
             }
+
 
             /* This is not terribly efficient, but necessary because some timezone
              * specifics (like the abbreviation and offset) are temporal. */
@@ -109,31 +109,33 @@
              * @returns {*} A Date "aligned" to the desired timezone.
              */
             align: function (date, timezone, silent) {
-                var eMsg;
-
                 if (!angular.isDate(date)) {
-                    eMsg = 'Expected a Date object; got: ' + typeof reference + ' of ' + date;
-                    $log.error(eMsg);
                     throw {
-                        name: 'DateObjectExpected',
-                        message: eMsg
+                        name : 'DateObjectExpected',
+                        message : 'Expected a Date object; got "' + date + '".'
                     };
                 }
 
-                if (angular.isObject(timezone) && timezone.name) {
-                    return toExtendedNative(new timezoneJS.Date(date, timezone.name));
-                }
+                // Lining up code with tests. If a bogus timezone is passed in and mode is silent, don't 
+                // throw an error, return a date.
+                try {
+                    if (angular.isObject(timezone) && timezone.name) {
+                        return toExtendedNative(new timezoneJS.Date(date, timezone.name));
+                    }
 
-                if (angular.isString(timezone)) {
-                    return toExtendedNative(new timezoneJS.Date(date, timezone));
+                    if (angular.isString(timezone)) {
+                        return toExtendedNative(new timezoneJS.Date(date, timezone));
+                    }
                 }
-
-                if (true === silent) {
-                    return date;
+                catch(e) {
+                    if (true === silent) {
+                        return date;
+                    }
+                    else {
+                        throw new Error('The timezone argument must either be an Olson name (e.g., America/New_York), ' +
+                            'or a timezone object (produced by the resolve function) bearing an Olson name on the name property.');
+                    }
                 }
-                eMsg = 'The timezone argument must either be an Olson name (e.g., America/New_York), or a timezone object (produced by the resolve function) bearing an Olson name on the name property.';
-                $log.error(eMsg);
-                throw new Error(eMsg);
             },
 
             /**
@@ -158,14 +160,12 @@
              * definitions from the IANA database).
              */
             getLocal: function () {
-                var eMsg, name, now;
+                var name, now;
 
-                if ('undefined' === typeof (jstz) || 'function' !== typeof (jstz.determine)) {
-                    eMsg = 'The jsTimezoneDetect library, available at https://bitbucket.org/pellepim/jstimezonedetect, is required to detect the local timezone.';
-                    $log.error(eMsg);
+                if ('undefined' === typeof(jstz) || 'function' !== typeof(jstz.determine)) {
                     throw {
-                        name: 'JSTZLibraryMissing',
-                        message: eMsg
+                        name : 'JSTZLibraryMissing',
+                        message : 'The jsTimezoneDetect library, available at https://bitbucket.org/pellepim/jstimezonedetect, is required to detect the local timezone.'
                     };
                 }
 
@@ -260,10 +260,15 @@
             if (!angular.isDate(verifiedDate) || isNaN(verifiedDate.getTime())) {
                 return date;
             }
+            
+            try {
+                alignedDate = $timezones.align(verifiedDate, timezone, true);
+            }
+            catch(e) {
+                return date;
+            }
 
-            alignedDate = $timezones.align(verifiedDate, timezone, true);
-
-            if (isNaN(alignedDate.getTime())) {
+            if (!alignedDate || !alignedDate.getTime || isNaN(alignedDate.getTime())) {
                 return date;
             }
 
