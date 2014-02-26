@@ -44,13 +44,13 @@ If [jsTimezoneDetect](https://bitbucket.org/pellepim/jstimezonedetect) is includ
 
 ## Examples
 
-See `docs/examples` for demonstrations of these features. As timezone data (found in `tz/data`) _must_ be served from a web server, these examples will not work from the local disk. A quick solution is to use the included node web-server.js script. With [node](http://nodejs.org) installed run 'node scripts/web-server.js', and point your browser to http://localhost:8000/docs/examples/filters.html
+See `docs/examples` for demonstrations of these features. As timezone data (found in `tz/data`) _must_ be served from a web server, these examples will not work from the local disk. A quick solution is to use the included node web-server.js script. With [node](http://nodejs.org) installed:
 
 ```shell
-python -m SimpleHTTPServer
+node scripts/web-server.js
 ```
 
-Once running, visit `http://localhost:8000/` in your web browser, and navigate to the examples folder.
+Once running, visit `http://localhost:8000/docs/examples/filters.html` in your web browser.
 
 ## Developers
 
