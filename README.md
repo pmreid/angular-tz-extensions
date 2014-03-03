@@ -1,8 +1,8 @@
-Angular TZ Extensions
+# Angular TZ Extensions
 
 Originally forked from  https://github.com/michaelahlers/angular-timezones.
 
-### Install 
+## Install 
 
 Install using [Bower](https://github.com/bower/bower):
 
@@ -73,7 +73,7 @@ You can retrieve an array of all available timezones- perfect for populating a s
 
     $timezones.getZoneList($scope);
 
-### Examples
+## Examples
 
 A sample application is included. Run it locally using [Node](http://nodejs.org):
 
