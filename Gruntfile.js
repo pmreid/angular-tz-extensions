@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            uses_defaults: ['js/angular-timezones.js']
+            uses_defaults: ['lib/angular-tz-extensions.js']
         },
 
         uglify: {
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             },
             my_target: {
                 files: {
-                    'js/angular-timezones.min.js': ['js/angular-timezones.js']
+                    'lib/angular-tz-extensions.min.js': ['lib/angular-tz-extensions.js']
                 }
             }
         }

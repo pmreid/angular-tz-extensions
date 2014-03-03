@@ -8,6 +8,12 @@ Install using [Bower](https://github.com/bower/bower):
 
     bower install angular-tz-extensions
 
+Once installed include the follwing scripts in your app:
+
+    <script type="text/javascript" src="/bower_components/timezone-js/src/date.js"></script>
+    <script type="text/javascript" src="/packages/jstimezonedetect/jstz.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-tz-extensions/lib/angular-tz-extensions.js"></script>
+
 ## Usage
 
 After including `angular-timezones.js`, add this package to your application.
