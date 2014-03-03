@@ -11,9 +11,12 @@ Install using [Bower](https://github.com/bower/bower):
 Once installed include the follwing scripts in your app:
 
     <script type="text/javascript" src="/bower_components/timezone-js/src/date.js"></script>
-    <script type="text/javascript" src="/packages/jstimezonedetect/jstz.min.js"></script>
     <script type="text/javascript" src="/bower_components/angular-tz-extensions/lib/angular-tz-extensions.js"></script>
 
+If you want to detect the local timezone, include the following as well:
+
+	<script type="text/javascript" src="/packages/jstimezonedetect/jstz.min.js"></script>
+    
 ## Usage
 
 After including `angular-timezones.js`, add this package to your application.
@@ -31,6 +34,19 @@ This is done by the unit tests and illustrated in `docs/examples`.
 ### Resolution
 
 The `$timezones.resolve(timezone, reference)` function will, using the reference `Date` provided, look up complete details about the timezone&mdash;including the abbreviation, offset, and decomposed region and locality. This is useful for avoiding clever tricks to extract abbreviations from `Date.toString` (which is not particularly portable or robust). Additionally, resulting values are derived from the authoritative IANA timezone data.
+	
+    var scope.timezone = $timezone.resolve('America/New_York', new Date());
+    console.log(scope.timezone);
+
+Returns:
+    
+    {
+        abbreviation: 'EST',
+        locality: 'New York',
+        name: 'America/New_York',
+        offset: 300,
+        region: 'America'
+    }
 
 ### Detection
 
@@ -40,7 +56,7 @@ If [jsTimezoneDetect](https://bitbucket.org/pellepim/jstimezonedetect) is includ
 
 A sample application is included. Run it locally using [Node](http://nodejs.org):
 
-    node scripts/web-server.js
+    node ./scripts/web-server.js
 
 Once running, point your browser to http://localhost:8000/app/filters.html
 
@@ -50,7 +66,5 @@ _Timezones for Angular_ is tested with [Karma](http://karma-runner.github.io/) a
 
 With [NPM](http://npmjs.com/) installed, you can test your modifications with the following.
 
-```
-npm install
-npm test
-```
+    npm install
+    npm test
