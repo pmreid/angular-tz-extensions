@@ -1,16 +1,16 @@
 {
-  "name" : "angular-timezones",
-  "description" : "Timezones for AngularJS",
-  "version" : "0.3.8",
-  "homepage" : "https://github.com/michaelahlers/angular-timezones",
+  "name" : "angular-tz-extensions",
+  "description" : "Extend date objects to include timezone",
+  "version" : "0.0.1",
+  "homepage" : "https://github.com/chouseknecht/angular-tz-extensions",
   "author" : {
-    "name" : "Michael Ahlers",
-    "email" : "michael@ahlers.co"
+    "name" : "Chris Houseknecht",
+    "email" : "chouse@ansbile.com"
   },
 
   "repository" : {
     "type" : "git",
-    "url" : "git@github.com:michaelahlers/angular-timezones.git"
+    "url" : "git@github.com:chouseknecht/angular-tz-extensions.git"
   },
 
   "dependencies" : {
@@ -30,8 +30,8 @@
 
   "contributors" : [
     {
-      "name" : "Tomas Ruzicka",
-      "email" : "t@abdoc.net"
+      "name" : "Chris Houseknecht",
+      "email" : "chouse@ansible.com"
     }
   ]
 }

@@ -1,10 +1,8 @@
 {
-  "name" : "angular-timezones",
-  "version" : "0.3.8",
-
-  "main" : "js/angular-timezones.js",
-
-  "ignore" : [
+  "name": "angular-tz-extensions",
+  "version": "0.0.1",
+  "main": "js/angular-timezones.js",
+  "ignore": [
     ".bowerrc",
     ".idea",
     ".gitignore",
@@ -12,13 +10,28 @@
     "index.html",
     "js/demo.js",
     "package.json",
-    "test"
+    "test",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
   ],
-
-  "dependencies" : {
-    "angular" : "latest",
-    "jquery" : "latest",
-    "angular-filters" : "latest",
-    "timezone-js" : "git@github.com:mde/timezone-js.git#v0.4.4"
-  }
+  "dependencies": {
+    "angular": "*",
+    "jquery": "*",
+    "angular-filters": "*",
+    "timezone-js": "git@github.com:mde/timezone-js.git#v0.4.4"
+  },
+  "homepage": "https://github.com/chouseknecht/angular-tz-extensions",
+  "description": "Add timezone information to a js date object, get local browser timezone info, and get a list of available timezones from the iana tz database.",
+  "keywords": [
+    "timezone",
+    "date",
+    "iana",
+    "tzdata"
+  ],
+  "authors": [
+    "Chris Houseknecht"
+  ],
+  "license": "MIT"
 }
