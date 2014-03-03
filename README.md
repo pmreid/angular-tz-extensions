@@ -54,7 +54,7 @@ If [jsTimezoneDetect](https://bitbucket.org/pellepim/jstimezonedetect) is includ
 
 ### List of available timezones
 
-You can retrieve an array of all available timezones- perfect for populating a select element. Use the $timezone.getZoneList($scope) method, passing in a scope instance. The method reads the zone.tab tab file, which is part of tzdata. When the data is ready, the method emits 'zonesReady'. Retrieve the data inside $scope.$on('zonesReady', callback). The data will be available in local storage. Use `JSON.parse(localStorage.zones)`. Here's an example taken from the included sample app:  
+You can retrieve an array of all available timezones- perfect for populating a select element. Use the `$timezone.getZoneList($scope)` method, passing in a scope instance. The method reads the zone.tab tab file, which is part of tzdata. When the data is ready, the method emits 'zonesReady'. Retrieve the data inside `$scope.$on('zonesReady', callback)`. The data will be available in local storage and can be accessed using: `JSON.parse(localStorage.zones)`. Here's an example taken from the included sample app:  
     
     if ($scope.removeZonesReady) {
         $scope.removeZonesReady();
