@@ -4,8 +4,8 @@
 
     application.constant('$timezones.definitions.location', '/tz/data');
 
-    application.controller('World', ['$scope', '$timezones',
-        function ($scope, $timezones) {
+    application.controller('World', ['$scope', '$timezones', '$filter',
+        function ($scope, $timezones, $filter) {
             
             var now = $scope.now = Date.now();
             
@@ -56,6 +56,7 @@
                 timezone: 'Etc/GMT+12',
                 reference: now
             }];
+            
         }
     ]);
 
