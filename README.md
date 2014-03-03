@@ -35,7 +35,9 @@ This is done by the unit tests and illustrated in the included sample app (see E
 
 ### Align date to a given timezone
 
-Use `$timezones.align(timezone, date)` to align a date object to a timezone represeneted as an Olsan timezone string value. The getFullYear, getMonth, getDate, getHours, getMinutes, getSeconds and getTimezone methods of the returned date object will present values in the requestedtimezone. Here is an example compare a date object aligned to the local timezone (America/New_York) with a date object created using the align method:
+Use `$timezones.align(timezone, date)` to align a date object to a timezone represeneted as an Olsan timezone string value. The getFullYear, getMonth, getDate, getHours, getMinutes, getSeconds and getTimezone methods of the returned date object will present values in the requested timezone.
+
+Below is an example comparing a date object aligned to the local timezone (America/New_York) with a date object created using the align method a timezone of 'America/Los_Angeles':
 
 	var rightNow = new Date();
 	console.log(rightNow.getTimezoneOffset());
