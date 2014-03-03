@@ -1,7 +1,7 @@
 {
   "name" : "angular-tz-extensions",
   "description" : "Extend date objects to include timezone",
-  "version" : "0.0.1",
+  "version" : "0.3.9",
   "homepage" : "https://github.com/chouseknecht/angular-tz-extensions",
   "author" : {
     "name" : "Chris Houseknecht",
