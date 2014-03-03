@@ -1,8 +1,9 @@
 # Angular TZ Extensions
 
-Javascript is good at creating a date with the local timezone, providing a robust set of methods for returning date and time information for the current timezone and UTC. But what if you want the date aligned to a timezone other than the local timezone? What if you need a list of timezones for a user to choose from? What if you need to know the offset for a particular timezone? Angular TZ Extensions provides the solution.
+Javascript is good at creating dates in the local timezone, and it provides a reasonable set of methods for returning date and time information within the local timezone and UTC. But what if you want a date object aligned to a timezone other than the local one? What if you need to present the user with a list of timezone choices? What if you need to know the offset or abbreviation for a particular timezone? Angular TZ Extensions provides the solution.
 
 Originally forked from  https://github.com/michaelahlers/angular-timezones.
+Depends on https://github.com/mde/timezone-js, http://pellepim.bitbucket.org/jstz/ and [AngularJS](http://angularjs.org).
 
 ## Install 
 
