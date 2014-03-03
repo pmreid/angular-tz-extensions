@@ -18,7 +18,7 @@ files = [
   'http://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.js',
 
   { pattern : 'tz/data/*', included : false },
-  'js/angular-timezones.js',
+  'lib/angular-tz-extensions.js',
 
   'test/filters/*Spec.js',
 //  'test/services/*Spec.js'

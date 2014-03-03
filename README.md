@@ -15,9 +15,13 @@ Once installed include the follwing scripts in your app:
     <script type="text/javascript" src="/bower_components/timezone-js/src/date.js"></script>
     <script type="text/javascript" src="/bower_components/angular-tz-extensions/lib/angular-tz-extensions.js"></script>
 
-If you want to detect the local timezone, include the following as well:
+If you want to detect the local timezone, include the jstimezonedetect. You can use the package found in this repo:
 
-	<script type="text/javascript" src="/packages/jstimezonedetect/jstz.min.js"></script>
+    <script type="text/javascript" src="/packages/jstimezonedetect/jstz.min.js"></script>
+   
+Or, pull it from a CDN:
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.js"></script>
     
 ## Usage
 
@@ -67,7 +71,7 @@ Alignment can also be accomplished at the view level using the provided tzAlign 
 
 			{{ someDate|tzAlign:'America/Los_Angeles'|date:"yyyy-MM-dd HH:mm:ss Z" }}
 
-### Resolution
+### Resolve a timezone
 
 The `$timezones.resolve(timezone, reference)` function will, using the reference `Date` provided, look up complete details about the timezone&mdash;including the abbreviation, offset, and decomposed region and locality. This is useful for avoiding clever tricks to extract abbreviations from `Date.toString` (which is not particularly portable or robust). Additionally, resulting values are derived from the authoritative IANA timezone data.
 	
@@ -84,13 +88,13 @@ Returns:
         region: 'America'
     }
 
-### Detection
+### Detect local timezone
 
 If [jsTimezoneDetect](https://bitbucket.org/pellepim/jstimezonedetect) is included, the `$timezones.getLocal()` function will detect the browser's local timezone and provide a complete definition that's resolved against the IANA database. For convenience, jsTimezoneDetect is included in packages/jstimezonedetect. You may want to pull the latest version in from bitbucket.
 
 
 
-### List of available timezones
+### Get a list of available timezones
 
 You can retrieve an array of all available timezones- perfect for populating a select element. Use the `$timezone.getZoneList($scope)` method, passing in a scope instance. The method reads the zone.tab tab file, which is part of tzdata. When the data is ready, the method emits 'zonesReady'. Retrieve the data inside `$scope.$on('zonesReady', callback)`. The data will be available in local storage and can be accessed using: `JSON.parse(localStorage.zones)`. Here's an example taken from the included sample app:  
     
@@ -121,9 +125,12 @@ Once running, point your browser to http://localhost:8000/app/filters.html
 
 ## Developers
 
-_Timezones for Angular_ is tested with [Karma](http://karma-runner.github.io/) and [PhantomJS](http://phantomjs.org/) against the latest available release of [jQuery](http://jquery.com/) (2.0.0) and [AngularJS](http://angularjs.com/) (1.1.4).
+_Timezones for Angular_ is tested with [Karma](http://karma-runner.github.io/) and [PhantomJS](http://phantomjs.org/) against the latest available release of [jQuery](http://jquery.com/) and [AngularJS](http://angularjs.com/).
 
 With [NPM](http://npmjs.com/) installed, you can test your modifications with the following.
 
     npm install
     npm test
+
+To run the tests you will need to have phantomjs in your PATH. Install it globally using `npm install -g phantomjs` or manually add it to your path using something like `export PATH=$PATH:./node_modules/phantomjs/bin/phantomjs`
+
