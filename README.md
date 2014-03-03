@@ -126,7 +126,7 @@ Once running, point your browser to http://localhost:8000/app/filters.html
 
 ## Developers
 
-_Timezones for Angular_ is tested with [Karma](http://karma-runner.github.io/) and [PhantomJS](http://phantomjs.org/) against the latest available release of [jQuery](http://jquery.com/) and [AngularJS](http://angularjs.com/).
+_Timezones for Angular_ is tested with [Karma](http://karma-runner.github.io/) and [PhantomJS](http://phantomjs.org/)
 
 With [NPM](http://npmjs.com/) installed, you can test your modifications with the following.
 
