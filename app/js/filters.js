@@ -19,6 +19,7 @@
                 for (i=0; i < $scope.zones.length; i++) {
                     if ($scope.zones[i].name === $scope.current_timezone.name) {
                         $scope.selectedZone = $scope.zones[i];
+                        break;
                     }
                 }
             });

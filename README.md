@@ -29,7 +29,7 @@ This package provides the [IANA timezone data](http://iana.org/time-zones), but 
 
     yourApplication.constant('$timezones.definitions.location', '/custom/path/to/tz/data')
 
-This is done by the unit tests and illustrated in `docs/examples`.
+This is done by the unit tests and illustrated in the included sample app (see Examples below).
 
 ### Resolution
 
@@ -52,7 +52,28 @@ Returns:
 
 If [jsTimezoneDetect](https://bitbucket.org/pellepim/jstimezonedetect) is included, the `$timezones.getLocal()` function will detect the browser's local timezone and provide a complete definition that's resolved against the IANA database. For convenience, jsTimezoneDetect is included in packages/jstimezonedetect. You may want to pull the latest version in from bitbucket.
 
-## Examples
+### List of available timezones
+
+You can retrieve an array of all available timezones- perfect for populating a select element. Use the $timezone.getZoneList($scope) method, passing in a scope instance. The method reads the zone.tab tab file, which is part of tzdata. When the data is ready, the method emits 'zonesReady'. Retrieve the data inside $scope.$on('zonesReady', callback). The data will be available in local storage. Use `JSON.parse(localStorage.zones)`. Here's an example taken from the included sample app:  
+    
+    if ($scope.removeZonesReady) {
+        $scope.removeZonesReady();
+    }
+    $scope.removeZonesReady = $scope.$on('zonesReady', function() {
+        var i;
+        $scope.zones = JSON.parse(localStorage.zones);
+        $scope.current_timezone = $timezones.getLocal();
+        for (i=0; i < $scope.zones.length; i++) {
+            if ($scope.zones[i].name === $scope.current_timezone.name) {
+                $scope.selectedZone = $scope.zones[i];
+                break;
+            }
+        }
+    });
+
+    $timezones.getZoneList($scope);
+
+### Examples
 
 A sample application is included. Run it locally using [Node](http://nodejs.org):
 
