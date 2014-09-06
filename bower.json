@@ -20,7 +20,7 @@
     "angular": "*",
     "jquery": "*",
     "angular-filters": "*",
-    "timezone-js": "git@github.com:mde/timezone-js.git#v0.4.4"
+    "timezone-js": "git://github.com/mde/timezone-js.git#v0.4.4"
   },
   "homepage": "https://github.com/chouseknecht/angular-tz-extensions",
   "description": "Add timezone information to a js date object, get local browser timezone info, and get a list of available timezones from the iana tz database.",
