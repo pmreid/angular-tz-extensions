@@ -1,6 +1,6 @@
 {
   "name": "angular-tz-extensions",
-  "version": "0.3.10",
+  "version": "0.3.12",
   "main": "js/angular-timezones.js",
   "ignore": [
     ".bowerrc",
